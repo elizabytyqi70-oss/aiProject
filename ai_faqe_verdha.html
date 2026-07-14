@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligjenca Artificiale (AI)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #8B7355;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            gap: 40px;
+            min-height: 100vh;
+        }
+
+        .faqe {
+            background: linear-gradient(135deg, #FFF8DC 0%, #F5DEB3 30%, #FFD700 70%, #FFC107 100%);
+            width: 210mm;
+            min-height: 297mm;
+            padding: 50px 60px;
+            box-shadow:
+                5px 5px 20px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(255, 215, 0, 0.3),
+                inset 0 0 50px rgba(255, 255, 200, 0.3);
+            border-radius: 3px;
+            position: relative;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 28px,
+                    rgba(139, 115, 85, 0.15) 28px,
+                    rgba(139, 115, 85, 0.15) 29px
+                );
+        }
+
+        .faqe::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 40px;
+            width: 2px;
+            height: 100%;
+            background: rgba(200, 150, 100, 0.25);
+        }
+
+        h1 {
+            text-align: center;
+            color: #5D4037;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+            letter-spacing: 2px;
+            border-bottom: 3px double #8D6E63;
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: #4E342E;
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            border-left: 5px solid #FF8F00;
+            padding-left: 12px;
+        }
+
+        h3 {
+            color: #5D4037;
+            font-size: 1.2em;
+            margin-top: 18px;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: #3E2723;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        ul, ol {
+            color: #3E2723;
+            line-height: 1.8;
+            margin-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        .numri-faqes {
+            text-align: center;
+            color: #8D6E63;
+            font-style: italic;
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+
+        .highlight-box {
+            background: rgba(255, 215, 0, 0.35);
+            border: 2px solid #FF8F00;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 18px 0;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 12px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th {
+            background: rgba(255, 143, 0, 0.3);
+            color: #4E342E;
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #BCAAA4;
+        }
+
+        td {
+            padding: 8px 10px;
+            color: #3E2723;
+            border: 1px solid #BCAAA4;
+        }
+
+        tr:nth-child(even) td {
+            background: rgba(255, 215, 0, 0.12);
+        }
+
+        .pullquote {
+            font-size: 1.1em;
+            font-style: italic;
+            color: #5D4037;
+            text-align: center;
+            padding: 15px 30px;
+            margin: 20px 0;
+            border-top: 2px solid #FF8F00;
+            border-bottom: 2px solid #FF8F00;
+        }
+
+        .stamp {
+            position: absolute;
+            bottom: 50px;
+            right: 50px;
+            color: rgba(200, 150, 50, 0.3);
+            font-size: 5em;
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .faqe {
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            .faqe {
+                width: 100%;
+                padding: 25px;
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== FAQJA 1 ==================== -->
+    <div class="faqe">
+        <h1>🧠 Inteligjenca Artificiale</h1>
+        <p style="text-align:center; color:#6D4C41; font-style:italic; margin-bottom:25px;">
+            Revolucioni teknologjik që po ndryshon botën
+        </p>
+
+        <h2>📖 Çfarë është Inteligjenca Artificiale?</h2>
+        <p>
+            Inteligjenca Artificiale (AI) është një degë e shkencave kompjuterike që synon krijimin e sistemeve
+            të afta për të kryer detyra që normalisht kërkojnë inteligjencë njerëzore. Këto përfshijnë:
+            mësimin, arsyetimin, zgjidhjen e problemeve, perceptimin vizual, njohjen e të folurit,
+            përkthimin e gjuhëve dhe vendimmarrjen.
+        </p>
+
+        <div class="highlight-box">
+            <strong>💡 Fakt kyç:</strong> Termi "Inteligjencë Artificiale" u përdor për herë të parë nga
+            <em>John McCarthy</em> në vitin 1956 gjatë konferencës së Dartmouth-it, e cila konsiderohet
+            si lindja zyrtare e AI si fushë shkencore.
+        </div>
+
+        <h2>📜 Historia dhe Evolucioni i AI</h2>
+        <table>
+            <tr><th>Viti</th><th>Ngjarja Kryesore</th></tr>
+            <tr><td>1950</td><td>Alan Turing publikon "Computing Machinery and Intelligence" dhe propozon Testin Turing</td></tr>
+            <tr><td>1956</td><td>Konferenca e Dartmouth — lindja zyrtare e AI</td></tr>
+            <tr><td>1966</td><td>ELIZA — chatbot-i i parë, krijuar nga Joseph Weizenbaum</td></tr>
+            <tr><td>1997</td><td>Deep Blue i IBM mposht kampionin botëror të shahut, Garry Kasparov</td></tr>
+            <tr><td>2011</td><td>Watson i IBM fiton lojën Jeopardy! kundër kampionëve njerëzorë</td></tr>
+            <tr><td>2016</td><td>AlphaGo i DeepMind mposht kampionin botëror të Go-së, Lee Sedol</td></tr>
+            <tr><td>2022</td><td>ChatGPT i OpenAI lansohet dhe arrin 100 milion përdorues në 2 muaj</td></tr>
+            <tr><td>2023–24</td><td>Shpërthimi i AI gjenerative: GPT-4, Claude, Gemini, modele multimodale</td></tr>
+        </table>
+
+        <h2>🧩 Llojet e Inteligjencës Artificiale</h2>
+
+        <h3>1. AI e Ngushtë (ANI — Artificial Narrow Intelligence)</h3>
+        <p>
+            E specializuar në një detyrë të vetme. Të gjitha sistemet aktuale të AI janë të këtij lloji.
+            Shembuj: asistentët virtualë (Siri, Alexa), sistemet e rekomandimit (Netflix, YouTube),
+            makinat vetë-drejtuese.
+        </p>
+
+        <h3>2. AI e Përgjithshme (AGI — Artificial General Intelligence)</h3>
+        <p>
+            Një AI hipotetike që do të kishte aftësi njohëse të barabarta me njeriun në çdo fushë.
+            Ende nuk është arritur, por shumë kompani (OpenAI, DeepMind, Anthropic) po punojnë drejt saj.
+        </p>
+
+        <h3>3. Superinteligjenca Artificiale (ASI)</h3>
+        <p>
+            Një formë teorike e AI që do të tejkalonte inteligjencën njerëzore në të gjitha aspektet.
+            Mbetet subjekt i debatit filozofik dhe etik.
+        </p>
+
+        <div class="pullquote">
+            "AI është elektriciteti i ri — do të transformojë çdo industri dhe çdo aspekt të jetës sonë."
+            — Andrew Ng
+        </div>
+
+        <p class="numri-faqes">— Faqja 1 —</p>
+        <div class="stamp">AI</div>
+    </div>
+
+    <!-- ==================== FAQJA 2 ==================== -->
+    <div class="faqe">
+        <h1>🤖 Degët dhe Aplikimet e AI</h1>
+        <p style="text-align:center; color:#6D4C41; font-style:italic; margin-bottom:25px;">
+            Nga mësimi i makinerive te robotika dhe e ardhmja
+        </p>
+
+        <h2>🔬 Degët Kryesore të AI</h2>
+
+        <div class="grid-2">
+            <div>
+                <h3>Machine Learning (ML)</h3>
+                <p>Algoritme që mësojnë nga të dhënat pa u programuar në mënyrë eksplicite. Përfshin mësimin e mbikëqyrur, të pambikëqyrur dhe përforcues.</p>
+            </div>
+            <div>
+                <h3>Deep Learning</h3>
+                <p>Rrjete neurale me shumë shtresa (deep neural networks) që përpunojnë të dhëna komplekse si imazhe, audio dhe tekst.</p>
+            </div>
+            <div>
+                <h3>NLP (Natural Language Processing)</h3>
+                <p>Përpunimi i gjuhës natyrore — aftësia e kompjuterave për të kuptuar dhe gjeneruar gjuhën njerëzore.</p>
+            </div>
+            <div>
+                <h3>Computer Vision</h3>
+                <p>Interpretimi i imazheve dhe videove nga kompjuterat — njohja e fytyrave, objekteve, dhe skenave.</p>
+            </div>
+            <div>
+                <h3>Robotika</h3>
+                <p>Ndërthurja e AI me inxhinierinë mekanike për krijimin e robotëve të aftë për lëvizje dhe ndërveprim fizik.</p>
+            </div>
+            <div>
+                <h3>AI Gjenerative</h3>
+                <p>Sisteme që krijojnë përmbajtje të re: tekst, imazhe, muzikë, video dhe kod (ChatGPT, DALL-E, Midjourney).</p>
+            </div>
+        </div>
+
+        <h2>🌍 Aplikimet në Botën Reale</h2>
+        <table>
+            <tr><th>Sektori</th><th>Aplikimi i AI</th></tr>
+            <tr><td>🏥 Shëndetësia</td><td>Diagnostikimi i sëmundjeve, zbulimi i ilaçeve, kirurgjia robotike, analiza e imazheve mjekësore</td></tr>
+            <tr><td>🏦 Financa</td><td>Zbulimi i mashtrimeve, tregtimi algoritmik, vlerësimi i riskut, chatbot-et bankare</td></tr>
+            <tr><td>🚗 Transporti</td><td>Makinat autonome, optimizimi i trafikut, dronët e dorëzimit, navigimi inteligjent</td></tr>
+            <tr><td>📚 Edukimi</td><td>Tutorët virtualë, personalizimi i mësimit, vlerësimi automatik, përkthimi në kohë reale</td></tr>
+            <tr><td>🎮 Argëtimi</td><td>Rekomandimet e përmbajtjes, krijimi i lojërave, efektet speciale, kompozimi muzikor</td></tr>
+            <tr><td>🏭 Industria</td><td>Mirëmbajtja parashikuese, kontrolli i cilësisë, optimizimi i zinxhirit të furnizimit</td></tr>
+            <tr><td>🌾 Bujqësia</td><td>Monitorimi i të korrave, bujqësia precize, detektimi i sëmundjeve të bimëve</td></tr>
+        </table>
+
+        <h2>⚖️ Etika dhe Sfidat e AI</h2>
+        <ul>
+            <li><strong>Paragjykimi algoritmik:</strong> Modelet e AI mund të trashëgojnë dhe amplifikojnë paragjykimet ekzistuese në të dhëna</li>
+            <li><strong>Privatësia:</strong> Mbledhja masive e të dhënave personale për trajnimin e modeleve</li>
+            <li><strong>Siguria dhe keqpërdorimi:</strong> Deepfakes, dezinformimi, armët autonome</li>
+            <li><strong>Ndikimi në tregun e punës:</strong> Automatizimi i vendeve të punës dhe nevoja për rikualifikim</li>
+            <li><strong>Transparenca:</strong> Problemi i "kutisë së zezë" — si marrin vendimet modelet e thella</li>
+            <li><strong>Rregullimi ligjor:</strong> Nevoja për korniza ligjore globale për zhvillimin e përgjegjshëm të AI</li>
+        </ul>
+
+        <div class="highlight-box">
+            <strong>🔮 E ardhmja e AI:</strong> Ekspertët parashikojnë që AI do të integrohet në çdo aspekt të jetës —
+            nga asistentët personalë hiper-inteligjentë, te zbulimet shkencore të përshpejtuara, qytetet
+            inteligjente dhe mjekësia e personalizuar në nivel gjenetik. Sfida kryesore mbetet sigurimi
+            që kjo teknologji të zhvillohet në mënyrë të sigurt, etike dhe gjithëpërfshirëse.
+        </div>
+
+        <div class="pullquote">
+            "Inteligjenca Artificiale nuk është magji — është matematikë, të dhëna dhe shumë punë e palodhur."
+        </div>
+
+        <p class="numri-faqes">— Faqja 2 —</p>
+        <div class="stamp">AI</div>
+    </div>
+
+</body>
+</html>
