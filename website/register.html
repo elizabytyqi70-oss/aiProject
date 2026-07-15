@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="sq" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="Regjistrohuni në NOVA Agency dhe filloni transformimin dixhital.">
+  <title>Regjistrohu — NOVA Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .auth-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)); padding: var(--space-xl); }
+    .auth-card { background: var(--color-white); border-radius: var(--radius-lg); padding: var(--space-3xl); width: 100%; max-width: 440px; box-shadow: var(--shadow-2xl); }
+    .auth-card h2 { text-align: center; margin-bottom: 0.25rem; }
+    .auth-card .sub { text-align: center; color: var(--color-gray-500); margin-bottom: var(--space-xl); font-size: 0.9rem; }
+    .auth-form { display: flex; flex-direction: column; gap: var(--space-md); }
+    .auth-form .btn { width: 100%; justify-content: center; }
+    .auth-footer { text-align: center; margin-top: var(--space-lg); font-size: 0.9rem; color: var(--color-gray-500); }
+    .auth-footer a { font-weight: 600; }
+    .error-msg { background: #fef2f2; color: #dc2626; padding: 0.75rem 1rem; border-radius: var(--radius-md); font-size: 0.85rem; display: none; }
+    .error-msg.show { display: block; }
+    .success-msg { background: #f0fdf4; color: #16a34a; padding: 0.75rem 1rem; border-radius: var(--radius-md); font-size: 0.85rem; display: none; }
+    .success-msg.show { display: block; }
+  </style>
+</head>
+<body>
+  <main class="auth-page">
+    <div class="auth-card">
+      <a href="index.html" style="display:block;text-align:center;margin-bottom:1.5rem;">
+        <span style="display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-heading);font-size:1.5rem;font-weight:800;color:var(--color-primary);letter-spacing:-0.03em;">
+          <span style="width:36px;height:36px;background:var(--color-accent);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;color:var(--color-primary);font-weight:900;font-size:1.2rem;">N</span> NOVA
+        </span>
+      </a>
+      <h2>Krijo Llogari</h2>
+      <p class="sub">Regjistrohuni për të aksesuar të gjitha shërbimet</p>
+
+      <div class="error-msg" id="error-msg"></div>
+      <div class="success-msg" id="success-msg"></div>
+
+      <form class="auth-form" id="register-form">
+        <div class="form-group">
+          <label for="full_name">Emri i Plotë</label>
+          <input type="text" id="full_name" placeholder="Emri Mbiemri" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="ju@email.com" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="password">Fjalëkalimi</label>
+          <input type="password" id="password" placeholder="Minimum 6 karaktere" required autocomplete="new-password" minlength="6">
+        </div>
+        <div class="form-group">
+          <label for="password_confirm">Konfirmo Fjalëkalimin</label>
+          <input type="password" id="password_confirm" placeholder="Shkruaj përsëri fjalëkalimin" required autocomplete="new-password" minlength="6">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Regjistrohu →</button>
+      </form>
+
+      <p class="auth-footer">Keni tashmë llogari? <a href="login.html">Hyni këtu</a></p>
+      <p class="auth-footer" style="margin-top:0.5rem;"><a href="index.html">← Kthehu në faqen kryesore</a></p>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/auth.js"></script>
+  <script>
+    document.getElementById('register-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const err = document.getElementById('error-msg');
+      const ok = document.getElementById('success-msg');
+      const btn = e.target.querySelector('button');
+
+      err.classList.remove('show');
+      ok.classList.remove('show');
+
+      const fullName = document.getElementById('full_name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const confirm = document.getElementById('password_confirm').value;
+
+      if (password !== confirm) {
+        err.textContent = 'Fjalëkalimet nuk përputhen.';
+        err.classList.add('show');
+        return;
+      }
+
+      if (password.length < 6) {
+        err.textContent = 'Fjalëkalimi duhet të ketë të paktën 6 karaktere.';
+        err.classList.add('show');
+        return;
+      }
+
+      btn.textContent = 'Duke u regjistruar...';
+      btn.disabled = true;
+
+      try {
+        await register(email, password, fullName);
+        ok.textContent = 'Regjistrimi u krye me sukses! Po ju ridrejtojmë...';
+        ok.classList.add('show');
+        e.target.reset();
+        setTimeout(() => { window.location.href = 'index.html'; }, 1500);
+      } catch (error) {
+        err.textContent = error.message;
+        err.classList.add('show');
+        btn.textContent = 'Regjistrohu →';
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

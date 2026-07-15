@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="sq" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="Hyrja në llogarinë tuaj — NOVA Agency.">
+  <title>Hyrja — NOVA Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .auth-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)); padding: var(--space-xl); }
+    .auth-card { background: var(--color-white); border-radius: var(--radius-lg); padding: var(--space-3xl); width: 100%; max-width: 440px; box-shadow: var(--shadow-2xl); }
+    .auth-card h2 { text-align: center; margin-bottom: 0.25rem; }
+    .auth-card .sub { text-align: center; color: var(--color-gray-500); margin-bottom: var(--space-xl); font-size: 0.9rem; }
+    .auth-form { display: flex; flex-direction: column; gap: var(--space-md); }
+    .auth-form .btn { width: 100%; justify-content: center; }
+    .auth-footer { text-align: center; margin-top: var(--space-lg); font-size: 0.9rem; color: var(--color-gray-500); }
+    .auth-footer a { font-weight: 600; }
+    .error-msg { background: #fef2f2; color: #dc2626; padding: 0.75rem 1rem; border-radius: var(--radius-md); font-size: 0.85rem; display: none; }
+    .error-msg.show { display: block; }
+  </style>
+</head>
+<body>
+  <main class="auth-page">
+    <div class="auth-card">
+      <a href="index.html" style="display:block;text-align:center;margin-bottom:1.5rem;">
+        <span style="display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-heading);font-size:1.5rem;font-weight:800;color:var(--color-primary);letter-spacing:-0.03em;">
+          <span style="width:36px;height:36px;background:var(--color-accent);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;color:var(--color-primary);font-weight:900;font-size:1.2rem;">N</span> NOVA
+        </span>
+      </a>
+      <h2>Mirë se vini përsëri</h2>
+      <p class="sub">Hyni në llogarinë tuaj për të vazhduar</p>
+
+      <div class="error-msg" id="error-msg"></div>
+
+      <form class="auth-form" id="login-form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="ju@email.com" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="password">Fjalëkalimi</label>
+          <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password" minlength="6">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Hyr →</button>
+      </form>
+
+      <p class="auth-footer">Nuk keni llogari? <a href="register.html">Regjistrohuni këtu</a></p>
+      <p class="auth-footer" style="margin-top:0.5rem;"><a href="index.html">← Kthehu në faqen kryesore</a></p>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/auth.js"></script>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const err = document.getElementById('error-msg');
+      const btn = e.target.querySelector('button');
+      err.classList.remove('show');
+      btn.textContent = 'Duke u identifikuar...';
+      btn.disabled = true;
+
+      try {
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        await login(email, password);
+        showToast('Mirë se vini! 🎉');
+        setTimeout(() => { window.location.href = 'index.html'; }, 800);
+      } catch (error) {
+        err.textContent = error.message === 'Invalid login credentials'
+          ? 'Email ose fjalëkalim i gabuar. Ju lutemi provoni përsëri.'
+          : error.message;
+        err.classList.add('show');
+        btn.textContent = 'Hyr →';
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
